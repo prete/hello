@@ -1,6 +1,7 @@
 #!/usr/bin/env nextflow
 nextflow.enable.dsl=2 
 
+params.greetings = ['Bonjour', 'Ciao', 'Hello', 'Hola']
 process sayHello {
   input: 
     val x
@@ -13,5 +14,5 @@ process sayHello {
 }
 
 workflow {
-  Channel.of('Bonjour', 'Ciao', 'Hello', 'Hola') | sayHello | view
+  Channel.of(params.greetings) | sayHello | view
 }
