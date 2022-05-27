@@ -14,5 +14,5 @@ process sayHello {
 }
 
 workflow {
-  Channel.of(params.greetings) | sayHello | view
+  Channel.of(params.greetings).flatten() | sayHello | view
 }
