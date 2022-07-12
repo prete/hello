@@ -1,0 +1,7 @@
+reports:
+  "**/report.html":
+    display: "Report"
+  "**/trace.txt":
+    display: "Trace"
+  "**/dag.dot":
+    display: "DAG"
