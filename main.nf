@@ -14,7 +14,7 @@ process sayHello {
 }
 
 process writeReport {
-  publishDir '${launchDir}'
+  publishDir '.'
 
   output:
     path("customReport.html")
