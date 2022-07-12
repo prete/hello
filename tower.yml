@@ -1,5 +1,5 @@
 reports:
-  "**/*report.html":
-    display: "Report"
-  "**/*trace.txt":
-    display: "Trace"
+  "**/*.html":
+    display: "HTML Report"
+  "**/*.txt":
+    display: "TXT Report"
