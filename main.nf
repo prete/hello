@@ -2,7 +2,6 @@
 nextflow.enable.dsl=2 
 
 process sayHello {
-  publishDir '${launchDir}'
   input: 
     val x
   output:
@@ -14,6 +13,29 @@ process sayHello {
     """
 }
 
+process writeReport {
+  publishDir '${launchDir}'
+
+  output:
+    path("customReport.html")
+    
+  script:
+    """
+    cat <<EOF > customReport.html
+<html>
+<h1>This is a Custom Report</h1>
+<table>
+<body>
+<tr><th>foo</th></tr>
+<tr><td>bar</td></tr>
+</table>
+</body>
+</html>
+EOF
+    """
+}
+
 workflow {
   Channel.of('Bonjour', 'Ciao', 'Hello', 'Hola') | sayHello | view
+  writeReport()
 }
