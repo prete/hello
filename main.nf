@@ -9,6 +9,7 @@ process sayHello {
   script:
     """
     echo '$x world!'
+    echo '$x world!' >> custom_report.html
     """
 }
 
