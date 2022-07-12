@@ -6,6 +6,7 @@ process sayHello {
     val x
   output:
     stdout
+
   script:
     """
     echo '$x world!'
@@ -13,6 +14,19 @@ process sayHello {
     """
 }
 
+process publishReport {
+  publishDir: '/tmp'
+
+  output:
+    path("customReport.html")
+
+  script:
+    """
+    echo '<html><body><h1>this is a custom report</h1></body></html>' >> customReport.html
+    """
+}
+
 workflow {
   Channel.of('Bonjour', 'Ciao', 'Hello', 'Hola') | sayHello | view
+  publishReport()
 }
